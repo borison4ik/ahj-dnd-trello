@@ -70,6 +70,7 @@ export default class Card {
       this.closestEl = document.elementFromPoint(evt.pageX, evt.pageY);
       this.closestList = this.closestEl.closest('.app__list');
       this.closestCard = this.closestEl.closest('.card');
+      this.closestBtn = this.closestEl.closest('.add__button');
       if (this.closestList && this.dragged) {
         this.hoverIndex = [...this.closestList.children].findIndex(
           (i) => i === this.closestCard
@@ -85,15 +86,9 @@ export default class Card {
           .querySelector('.add__button')
           .insertAdjacentElement('beforebegin', this.emtyEl);
       } else if (this.closestList && this.closestCard && this.dragged) {
-        if (
-          this.closestCard.getBoundingClientRect().top -
-            this.closestCard.getBoundingClientRect().height / 2 >
-          evt.pageY
-        ) {
-          this.closestCard.insertAdjacentElement('afterend', this.emtyEl);
-        } else {
-          this.closestCard.insertAdjacentElement('beforebegin', this.emtyEl);
-        }
+        this.closestCard.insertAdjacentElement('beforebegin', this.emtyEl);
+      } else if (this.dragged && this.closestList && this.closestBtn) {
+        this.closestBtn.insertAdjacentElement('beforebegin', this.emtyEl);
       }
     });
 
