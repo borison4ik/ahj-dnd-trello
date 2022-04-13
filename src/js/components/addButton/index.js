@@ -55,5 +55,6 @@ export default class Add {
 
     this.button.classList.add('hidden');
     target.insertAdjacentElement('beforebegin', addItem);
+    textArea.focus();
   }
 }
