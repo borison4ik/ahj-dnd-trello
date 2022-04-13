@@ -42,6 +42,7 @@ export default class App {
 
     document.addEventListener('MOVED_CARD', (evt) => {
       const { id, listId, position } = evt.detail;
+      console.log('position', position);
       this.STATE.moveCard(id, listId, position);
       this.render();
     });

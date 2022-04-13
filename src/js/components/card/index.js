@@ -71,10 +71,11 @@ export default class Card {
       this.closestList = this.closestEl.closest('.app__list');
       this.closestCard = this.closestEl.closest('.card');
       this.closestBtn = this.closestEl.closest('.add__button');
-      if (this.closestList && this.dragged) {
+      if (this.closestList && this.dragged && this.closestEl !== this.emtyEl) {
         this.hoverIndex = [...this.closestList.children].findIndex(
           (i) => i === this.closestCard
         );
+        console.log(this.hoverIndex);
       }
 
       if (
